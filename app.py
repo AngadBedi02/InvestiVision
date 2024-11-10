@@ -82,7 +82,13 @@ def grayscale_conversion(image):
     return grayscale
 
 def histogram_equalization(image):
-    grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    # Check if the image is already grayscale
+    if len(image.shape) == 3:  # 3 channels (RGB)
+        grayscale = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    else:  # The image is already grayscale
+        grayscale = image
+
+    # Apply histogram equalization
     equalized = cv2.equalizeHist(grayscale)
     return equalized
 
@@ -104,9 +110,13 @@ def detect_objects(image):
 # Image Upload
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
+# Store uploaded file in session state
+if uploaded_file:
+    st.session_state.uploaded_file = uploaded_file
+
 # Check if file is uploaded
-if uploaded_file is not None:
-    image = load_image(uploaded_file)
+if 'uploaded_file' in st.session_state:
+    image = load_image(st.session_state.uploaded_file)
 
     # Display original image side-by-side with enhanced images
     col1, col2 = st.columns(2)
@@ -166,8 +176,3 @@ if uploaded_file is not None:
 
 else:
     st.write("Please upload an image to start applying enhancements.")
-
-# Optional: Clear all modifications and reload the original image
-if st.sidebar.button("Reset Image"):
-    uploaded_file = None
-    st.experimental_rerun()
