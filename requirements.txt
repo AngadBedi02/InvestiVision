@@ -1,0 +1,42 @@
+InvestiVision
+
+InvestiVision is a Python-based image enhancement and object detection application built using Streamlit, OpenCV, and YOLOv5.
+
+Features:
+- Adjust brightness and contrast of images
+- Reduce noise in images
+- Apply edge detection and sharpening filters
+- Convert images to grayscale
+- Perform object detection with YOLOv5
+
+Installation
+
+To run the application, follow these steps:
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/AngadBedi02/InvestiVision.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the app:
+   ```bash
+   streamlit run app.py
+   ```
+
+Technologies Used:
+- Streamlit
+- OpenCV
+- YOLOv5 (PyTorch)
+- Pillow
+- NumPy
+
+Author:
+- [Angadveer Singh Bedi](https://github.com/AngadBedi02)
+
+License:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
